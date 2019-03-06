@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teach 09</title>
+</head>
+<body>
+<form action="/math" method="get">
+    <select name="op">
+        <option value="+">plus</option>
+        <option value="-">minus</option>
+        <option value="*">multiply</option>
+        <option value="/">divide</option>
+    </select>
+    <input type="text" name="o1">
+    <input type="text" name="o2">
+    <input type="submit">
+
+
+    <button id="button" value="val" name="but2">button 2</button>
+</form>
+
+</body>
+
+<script>
+    ("button").click(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "/math-service",
+            data: {
+                op: getElementById("op").val(),
+                o1: getElementById("o1").val(),
+                o2: getElementById("o2").val()
+            },
+            success: function (result) {
+                alert("success");
+            },
+            error: function (result) {
+            }
+        });
+    });</script>
+</html>
